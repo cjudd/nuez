@@ -59,4 +59,45 @@ environments {
             }
         }
     }
+    aws {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:mysql://${System.getProperty('RDS_HOSTNAME')}:${System.getProperty('RDS_PORT')}/nuez"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = System.getProperty('RDS_USERNAME')
+            password = System.getProperty('RDS_PASSWORD')
+            pooled = true
+            properties {
+               maxActive = -1
+               minEvictableIdleTimeMillis=1800000
+               timeBetweenEvictionRunsMillis=1800000
+               numTestsPerEvictionRun=3
+               testOnBorrow=true
+               testWhileIdle=true
+               testOnReturn=true
+               validationQuery="SELECT 1"
+            }
+        }
+    }
+    docker {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:mysql://${System.getProperty('MYSQL_PORT_3306_TCP_ADDR')}:${System.getProperty('MYSQL_PORT_3306_TCP_PORT')}/nuez"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = System.getProperty('MYSQL_USER')
+            password = System.getProperty('MYSQL_ROOT_PASSWORD')
+            pooled = true
+            properties {
+               maxActive = -1
+               minEvictableIdleTimeMillis=1800000
+               timeBetweenEvictionRunsMillis=1800000
+               numTestsPerEvictionRun=3
+               testOnBorrow=true
+               testWhileIdle=true
+               testOnReturn=true
+               validationQuery="SELECT 1"
+            }
+        }
+    }
+
 }
