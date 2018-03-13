@@ -82,10 +82,10 @@ environments {
     docker {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://${System.getenv()['MYSQL_PORT_3306_TCP_ADDR']}:${System.getenv()['MYSQL_PORT_3306_TCP_PORT']}/${System.getenv()['MYSQL_ENV_MYSQL_DATABASE']}"
+            url = "jdbc:mysql://${System.getenv()['DB_SERVER']}:${System.getenv()['DB_PORT']}/${System.getenv()['DB_DB']}"
             driverClassName = "com.mysql.jdbc.Driver"
-            username = System.getenv()['MYSQL_ENV_MYSQL_USER']
-            password = System.getenv()['MYSQL_ENV_MYSQL_PASSWORD']
+            username = System.getenv()['DB_USER']
+            password = System.getenv()['DB_PASSWORD']
             pooled = true
             properties {
                maxActive = -1
